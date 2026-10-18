@@ -54,7 +54,7 @@ The ticket intro (`#intro`) is a fixed overlay. Until it is dismissed, `body.pre
 
 | Section | Content |
 |---------|---------|
-| `#hello` | Tinsel fringe, vinyl "1", "LIFE OF A BABY SHOWGIRL" bead sign, "Hi, {guest}! You're Invited!" |
+| `#hello` | Tinsel fringe, vinyl "1", "LIFE OF A LITTLE SHOWGIRL" bead sign, "Hi, {guest}! You're Invited!" |
 | `#countdown` | Live countdown on a silver sequin panel; switches to "It's Showtime!" after the start time |
 | `#eras` | "My Eras": 12 months, one Taylor era per month in album release order (from `GALLERY`) |
 | `#details` | "The Party": date, time, venue (map link) |

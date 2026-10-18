@@ -22,11 +22,13 @@ const EVENT = {
 	dayNum: "6",
 	timeLabel: "4:00 PM",
 	timeSub: "'til the party's over",
-	venueName: "Guzman Residence",
-	venueAddress: "P-12, Pinatilan, Valencia City, Bukidnon",
-	mapUrl: "https://maps.google.com/?q=Pinatilan,+Valencia+City,+Bukidnon",
+	durationHours: 4, // end time for the Google Calendar event (start + this many hours)
+	venueName: "DRV Family Resort",
+	venueAddress: "Pinatilan, Valencia City, Bukidnon",
+	mapUrl: "https://maps.app.goo.gl/oPrpNHcZyeuhMvia6",
 	dressCode: "Showgirl Chic",
 	dressCodeSub: "Come dressed in your favorite Era — sequins, feathers & fringe strongly encouraged!",
+	dressCodeKids: "Little ones are welcome to come as superheroes or in any costume they love!",
 };
 
 // Dress-code color swatches (taken from the party decor).
@@ -58,4 +60,3 @@ const GALLERY = [
 	photo: `assets/img/eras/month-${String(i + 1).padStart(2, "0")}.jpg`,
 	...m,
 }));
-

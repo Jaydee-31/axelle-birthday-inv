@@ -108,13 +108,13 @@
 				<div class="vinyl reveal" aria-hidden="true">
 					<div class="vinyl-label"><span data-event="age">1</span></div>
 				</div>
-				<div class="bead-banner reveal" style="--d: 0.1s" data-beads="LIFE OF A|BABY SHOWGIRL" aria-label="Life of a baby showgirl"></div>
+				<div class="bead-banner reveal" style="--d: 0.1s" data-beads="LIFE OF A|LITTLE SHOWGIRL" aria-label="Life of a little showgirl"></div>
 				<h1 class="hero-hi reveal" id="hero-hi" style="--d: 0.2s">Hi, friend!</h1>
 				<h2 class="headline glitter hero-title reveal" style="--d: 0.3s">You're Invited!</h2>
 				<p class="hero-sub reveal" style="--d: 0.4s">to <span data-event="firstName">Axelle</span>'s <span data-event="ageOrdinal">1st</span> Birthday 🎂<br /><span class="mint-text" data-event="partyTitle">The Eras Party</span></p>
 				<a href="#countdown" class="scroll-cue reveal" style="--d: 0.9s" aria-label="Scroll down">
 					<span>Scroll</span>
-					<span class="scroll-arrow">&#8595;</span>
+					<span class="scroll-arrow" aria-hidden="true"><i></i><i></i></span>
 				</a>
 			</section>
 
@@ -145,20 +145,18 @@
 				<p class="scene-eyebrow reveal">Save the date</p>
 				<h2 class="headline glitter reveal">The Party</h2>
 				<div class="detail-grid">
-					<div class="detail-card glass-sm reveal">
+					<div class="detail-card glass-sm reveal wide">
 						<span class="detail-icon cal-icon"><span class="cal-month" data-event="monthShort">Nov</span><span class="cal-day" data-event="dayNum">6</span></span>
-						<span class="detail-label">Date</span>
-						<span class="detail-value"><span data-event="dateLabel">November 6, 2026</span><br /><span data-event="dayLabel">Friday</span></span>
-					</div>
-					<div class="detail-card glass-sm reveal">
-						<span class="detail-icon">🕓</span>
-						<span class="detail-label">Time</span>
-						<span class="detail-value"><span data-event="timeLabel">4:00 PM</span><br /><span class="detail-small" data-event="timeSub">'til the party's over</span></span>
+						<span class="detail-label">Date &amp; Time</span>
+						<span class="detail-value"
+							><span data-event="dayLabel">Friday</span>, <span data-event="dateLabel">November 6, 2026</span><br /><span data-event="timeLabel">4:00 PM</span> <span class="detail-small">· <span data-event="timeSub">'til the party's over</span></span></span
+						>
+						<a href="#" target="_blank" rel="noopener noreferrer" class="cal-btn" id="gcal-link">📅 Add to Google Calendar</a>
 					</div>
 					<a href="#" target="_blank" rel="noopener noreferrer" class="detail-card glass-sm reveal wide detail-card--link" id="venue-link">
 						<span class="detail-icon">🏰</span>
 						<span class="detail-label">Venue</span>
-						<span class="detail-value"><span data-event="venueName">Guzman Residence</span><br /><span class="detail-small" data-event="venueAddress">P-12, Pinatilan, Valencia City, Bukidnon</span></span>
+						<span class="detail-value"><span data-event="venueName">Guzman Residence</span><br /><span class="detail-small" data-event="venueAddress">Pinatilan, Valencia City, Bukidnon</span></span>
 						<span class="map-hint">View on Google Maps ↗</span>
 					</a>
 				</div>
@@ -172,13 +170,9 @@
 					<p class="dress-title glitter" data-event="dressCode">Showgirl Chic</p>
 					<p class="dress-sub" data-event="dressCodeSub">Come dressed in your favorite Era — sequins, feathers &amp; fringe strongly encouraged!</p>
 					<div class="swatches" id="swatches"></div>
-					<div class="dress-tips">
-						<span>🪩 Sequins</span>
-						<span>🪶 Feathers</span>
-						<span>✨ Fringe</span>
-					</div>
+
+					<p class="dress-kids"><strong>Kids:</strong> <span data-event="dressCodeKids">Little ones are welcome to come as superheroes or in any costume they love!</span></p>
 				</div>
-				<p class="bracelet-note reveal">📿 Bring a friendship bracelet to trade!</p>
 			</section>
 
 			<!-- RSVP -->
