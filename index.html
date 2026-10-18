@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="theme-color" content="#1a0f2e" />
+		<title>Axelle's 1st Birthday — The Eras Party</title>
+		<link href="assets/img/favicon.ico" rel="icon" />
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png" />
+		<link rel="manifest" href="assets/img/site.webmanifest" />
+		<meta property="og:title" content="You're Invited to Axelle Bree's 1st Birthday — The Eras Party 🪩" />
+		<meta property="og:description" content="Axelle is turning ONE! Grab your sequins and friendship bracelets — open your personalized ticket to the party." />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://axellebree.online/assets/img/intro-img.jpg" />
+		<meta property="og:image:alt" content="Axelle Bree's 1st Birthday Invitation" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="You're Invited to Axelle Bree's 1st Birthday — The Eras Party 🪩" />
+		<meta name="twitter:description" content="Axelle is turning ONE! Grab your sequins and friendship bracelets — open your personalized ticket to the party." />
+		<meta name="twitter:image" content="https://axellebree.online/assets/img/intro-img.jpg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body class="pre-show">
+		<!-- Background -->
+		<div id="bg-canvas">
+			<div class="orb orb1"></div>
+			<div class="orb orb2"></div>
+			<div class="orb orb3"></div>
+		</div>
+
+		<!-- Stage spotlights -->
+		<div class="beam-layer">
+			<div class="beam b1"></div>
+			<div class="beam b2"></div>
+			<div class="beam b3"></div>
+		</div>
+
+		<!-- Sequin confetti -->
+		<div class="confetti-layer" id="confetti-layer"></div>
+
+		<!-- Sparkles -->
+		<div class="sparkle-layer" id="sparkle-layer"></div>
+
+		<!-- Corner decor -->
+		<div class="corner-deco cd-tl">✨</div>
+
+		<!-- Audio button -->
+		<button id="audio-btn" title="Toggle music" aria-label="Toggle music">🔇</button>
+
+		<!-- ═══════════════════════════════════════════
+     ERROR SCREEN
+═══════════════════════════════════════════ -->
+		<div id="error-screen">
+			<div id="error-card" class="glass">
+				<div class="disco disco-sm disco-hang"></div>
+				<div class="error-icon">🎟️</div>
+				<h2 class="error-title">Oops!</h2>
+				<div class="divider"></div>
+				<p class="error-msg">This ticket is missing a guest name.<br />Please use the personalized link you received.</p>
+				<p class="error-hint">✦ If you believe this is an error, kindly contact the host ✦</p>
+			</div>
+		</div>
+
+		<!-- ═══════════════════════════════════════════
+     INTRO — CONCERT TICKET
+═══════════════════════════════════════════ -->
+		<div id="intro">
+			<div class="intro-wrap">
+				<div class="disco disco-hang"></div>
+				<div id="ticket">
+					<div class="ticket-main">
+						<div class="ticket-top">
+							<span>Admit One</span>
+							<span class="ticket-vip">✦ VIP ✦</span>
+						</div>
+						<p class="intro-eyebrow">You're invited to my</p>
+						<div class="portrait-frame">
+							<img src="assets/img/intro-img.jpg" alt="Axelle Bree" />
+						</div>
+						<h1 class="intro-name" data-event="name">Axelle Bree</h1>
+						<p class="intro-sub"><span data-event="ageOrdinal">1st</span> Birthday · <span data-event="partyTitle">The Eras Party</span></p>
+					</div>
+					<div class="ticket-perf"></div>
+					<div class="ticket-stub">
+						<div class="stub-col">
+							<span class="stub-label">Date</span>
+							<span class="stub-value"><span data-event="monthShort">Jan</span> <span data-event="dayNum">23</span></span>
+						</div>
+						<div class="stub-col">
+							<span class="stub-label">Doors</span>
+							<span class="stub-value" data-event="timeLabel">3:00 PM</span>
+						</div>
+						<div class="stub-col">
+							<span class="stub-label">Section</span>
+							<span class="stub-value">Dance Floor</span>
+						</div>
+					</div>
+					<div class="ticket-barcode"></div>
+				</div>
+				<button id="enter-btn">🎟️ Open My Ticket</button>
+			</div>
+		</div>
+
+		<!-- ═══════════════════════════════════════════
+     ONE-PAGE INVITATION
+═══════════════════════════════════════════ -->
+		<main id="page">
+			<!-- HELLO -->
+			<section class="section hero" id="hello">
+				<p class="scene-eyebrow reveal">✦ a little invite for you ✦</p>
+				<h1 class="hero-hi reveal" id="hero-hi">Hi, friend!</h1>
+				<h2 class="headline hero-title reveal">You're Invited! 🎉</h2>
+				<p class="hero-sub reveal">to <span data-event="firstName">Axelle</span>'s <span data-event="ageOrdinal">1st</span> Birthday · <span data-event="partyTitle">The Eras Party</span> 🪩</p>
+				<a href="#eras" class="scroll-cue reveal" aria-label="Scroll down">
+					<span>Scroll</span>
+					<span class="scroll-arrow">&#8595;</span>
+				</a>
+			</section>
+
+			<!-- MY ERAS -->
+			<section class="section" id="eras">
+				<p class="scene-eyebrow reveal">Year one, all</p>
+				<h2 class="headline reveal">My Eras</h2>
+				<div class="polaroids reveal">
+					<div class="polaroid">
+						<img class="pol-img" src="assets/img/polaroid-1.png" alt="Axelle as a newborn" />
+						<p class="pol-label">Debut Era 👶</p>
+					</div>
+					<div class="polaroid">
+						<img class="pol-img" src="assets/img/polaroid-2.png" alt="Axelle smiling" />
+						<p class="pol-label">Lover Era 💗</p>
+					</div>
+					<div class="polaroid">
+						<img class="pol-img" src="assets/img/polaroid-3.png" alt="Axelle at the beach" />
+						<p class="pol-label">Party Girl Era 🪩</p>
+					</div>
+				</div>
+				<div class="divider reveal" style="margin-top: 22px"></div>
+				<p class="scene-quote reveal">"Every era is better with you in it."</p>
+			</section>
+
+			<!-- PARTY DETAILS -->
+			<section class="section" id="details">
+				<p class="scene-eyebrow reveal">Tour date announced</p>
+				<h2 class="headline reveal">The Party</h2>
+				<p class="countdown reveal" id="countdown"></p>
+				<div class="detail-grid">
+					<div class="detail-card glass-sm reveal">
+						<span class="detail-icon cal-icon"><span class="cal-month" data-event="monthShort">Jan</span><span class="cal-day" data-event="dayNum">23</span></span>
+						<span class="detail-label">Date</span>
+						<span class="detail-value"><span data-event="dateLabel">January 23, 2027</span><br /><span data-event="dayLabel">Saturday</span></span>
+					</div>
+					<div class="detail-card glass-sm reveal">
+						<span class="detail-icon">🕒</span>
+						<span class="detail-label">Time</span>
+						<span class="detail-value"><span data-event="timeLabel">3:00 PM</span><br /><span class="detail-small" data-event="timeSub">'til the party's over</span></span>
+					</div>
+					<a href="#" target="_blank" rel="noopener noreferrer" class="detail-card glass-sm reveal wide detail-card--link" id="venue-link">
+						<span class="detail-icon">🏰</span>
+						<span class="detail-label">Venue</span>
+						<span class="detail-value"><span data-event="venueName">Guzman Residence</span><br /><span class="detail-small" data-event="venueAddress">P-12, Pinatilan, Valencia City, Bukidnon</span></span>
+						<span class="map-hint">View on Google Maps ↗</span>
+					</a>
+					<div class="detail-card glass-sm reveal wide">
+						<span class="detail-icon">👗</span>
+						<span class="detail-label">Dress Code</span>
+						<span class="detail-value"><span data-event="dressCode">Come dressed in your favorite Era</span><br /><span class="detail-small" data-event="dressCodeSub">Sequins, cowboy boots &amp; glitter strongly encouraged</span></span>
+					</div>
+				</div>
+				<p class="bracelet-note reveal">📿 Bring a friendship bracelet to trade!</p>
+			</section>
+
+			<!-- RSVP -->
+			<section class="section" id="rsvp">
+				<div class="disco disco-ending reveal"></div>
+				<h2 class="headline ending-big reveal">Are You Ready For It?</h2>
+				<div class="divider reveal"></div>
+				<p class="ending-msg reveal">
+					It wouldn't be my party without you,<br />
+					<span id="ending-guest">dear friend</span>! 💜
+				</p>
+				<button class="rsvp-btn reveal" id="rsvp-btn">💌 RSVP</button>
+				<p class="rsvp-instruction reveal">Let me know if you can make it!</p>
+			</section>
+
+			<footer class="page-footer">
+				<div class="bracelet" id="bracelet"></div>
+				<p>made with 💜 for Axelle</p>
+			</footer>
+		</main>
+
+		<!-- ═══════════════════════════════════════════
+     RSVP MODAL
+═══════════════════════════════════════════ -->
+		<div id="modal-overlay">
+			<div id="modal" class="glass" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+				<button id="modal-close" aria-label="Close">✕</button>
+				<div class="modal-emoji">💌</div>
+				<h3 class="modal-title" id="modal-title">Are you coming?</h3>
+				<p class="modal-sub">Say you'll be there<br />for my big day!</p>
+				<div class="modal-btns">
+					<button class="modal-yes" id="rsvp-yes">💃 Yes, I'll be there!</button>
+					<button class="modal-no" id="rsvp-no">Sorry, I can't make it</button>
+				</div>
+				<div class="modal-loading" id="modal-loading">
+					<div class="spinner"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Thank-you message -->
+		<div id="ty-msg">
+			<div class="ty-card glass">
+				<div class="ty-emoji" id="ty-emoji">🪩</div>
+				<div class="ty-text" id="ty-text">Thank You!</div>
+				<div class="ty-sub" id="ty-sub">We can't wait to see you there.</div>
+				<button class="ty-close" id="ty-close">Close</button>
+			</div>
+		</div>
+
+		<script src="js/error-handler.js"></script>
+		<script type="module" src="js/firebase.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/particles.js"></script>
+		<script src="js/audio.js"></script>
+		<script src="js/modal.js"></script>
+		<script src="js/page.js"></script>
+		<script src="js/intro.js"></script>
+		<script src="js/init.js"></script>
+	</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="noindex" />
+		<title>Axelle's Birthday — Guest Responses</title>
+		<link href="assets/img/favicon.ico" rel="icon" />
+		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:ital@1&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<style>
+			*,
+			*::before,
+			*::after {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--night: #1a0f2e;
+				--pink: #ff8fc7;
+				--lilac: #c9a7f5;
+				--gold: #f5d07a;
+				--text-dark: #fff6fb;
+				--text-mid: #ead9f7;
+				--text-light: #bfa8dc;
+			}
+
+			body {
+				min-height: 100vh;
+				background:
+					radial-gradient(ellipse at 50% -10%, #4a2470 0%, transparent 60%),
+					linear-gradient(170deg, #1d1033 0%, #2a1548 45%, #1a0f2e 100%) fixed;
+				background-color: var(--night);
+				font-family: "Quicksand", sans-serif;
+				color: var(--text-dark);
+				padding: 32px 16px 48px;
+			}
+
+			.page {
+				max-width: 520px;
+				margin: 0 auto;
+			}
+
+			header {
+				text-align: center;
+				margin-bottom: 24px;
+			}
+
+			.heading {
+				font-family: "Abril Fatface", serif;
+				font-size: clamp(32px, 9vw, 44px);
+				background: linear-gradient(135deg, #ffe1f1 0%, var(--pink) 35%, var(--lilac) 65%, var(--gold) 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				line-height: 1.2;
+			}
+
+			.subheading {
+				font-family: "Playfair Display", serif;
+				font-style: italic;
+				font-size: 13px;
+				color: var(--text-light);
+				margin-top: 6px;
+			}
+
+			.glass {
+				background: linear-gradient(160deg, rgba(70, 38, 110, 0.62), rgba(38, 20, 66, 0.7));
+				border: 1px solid rgba(255, 200, 235, 0.2);
+				box-shadow: 0 8px 30px rgba(10, 0, 30, 0.4);
+			}
+
+			.summary {
+				display: flex;
+				gap: 12px;
+				margin-bottom: 20px;
+			}
+
+			.summary-card {
+				flex: 1;
+				border-radius: 18px;
+				padding: 16px 10px;
+				text-align: center;
+			}
+
+			.summary-count {
+				font-family: "Abril Fatface", serif;
+				font-size: 34px;
+				line-height: 1;
+				color: var(--pink);
+			}
+			.summary-card:nth-child(2) .summary-count {
+				color: var(--lilac);
+			}
+			.summary-card:nth-child(3) .summary-count {
+				color: var(--gold);
+			}
+
+			.summary-label {
+				font-size: 10px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1.2px;
+				color: var(--text-light);
+				margin-top: 8px;
+			}
+
+			.list-card {
+				border-radius: 20px;
+				overflow: hidden;
+			}
+
+			.list-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 14px 18px;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1.2px;
+				color: var(--text-light);
+				border-bottom: 1px solid rgba(255, 200, 235, 0.12);
+			}
+
+			.list-header button {
+				background: none;
+				border: 1px solid rgba(255, 200, 235, 0.3);
+				border-radius: 50px;
+				color: var(--text-mid);
+				font: inherit;
+				padding: 4px 12px;
+				cursor: pointer;
+			}
+
+			.response-item {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 13px 18px;
+				border-bottom: 1px solid rgba(255, 200, 235, 0.08);
+				gap: 12px;
+			}
+
+			.response-item:last-child {
+				border-bottom: none;
+			}
+
+			.guest-info {
+				display: flex;
+				flex-direction: column;
+				gap: 2px;
+				min-width: 0;
+			}
+
+			.guest-name {
+				font-weight: 700;
+				font-size: 14px;
+				overflow-wrap: anywhere;
+			}
+
+			.guest-device {
+				font-size: 10px;
+				color: var(--text-light);
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.response-meta {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				gap: 4px;
+				flex-shrink: 0;
+			}
+
+			.response-badge {
+				font-size: 12px;
+				font-weight: 700;
+				padding: 3px 10px;
+				border-radius: 20px;
+			}
+
+			.badge-yes {
+				background: rgba(255, 143, 199, 0.18);
+				color: var(--pink);
+			}
+
+			.badge-no {
+				background: rgba(201, 167, 245, 0.14);
+				color: var(--lilac);
+			}
+
+			.response-time {
+				font-size: 11px;
+				color: var(--text-light);
+			}
+
+			.empty-state {
+				padding: 40px 20px;
+				text-align: center;
+				color: var(--text-light);
+				font-style: italic;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<header>
+				<div class="heading">Guest Responses</div>
+				<div class="subheading" id="subheading">Axelle's 1st Birthday · The Eras Party</div>
+			</header>
+
+			<div class="summary">
+				<div class="summary-card glass">
+					<div class="summary-count" id="count-yes">—</div>
+					<div class="summary-label">Attending</div>
+				</div>
+				<div class="summary-card glass">
+					<div class="summary-count" id="count-no">—</div>
+					<div class="summary-label">Can't make it</div>
+				</div>
+				<div class="summary-card glass">
+					<div class="summary-count" id="count-total">—</div>
+					<div class="summary-label">Total</div>
+				</div>
+			</div>
+
+			<div class="list-card glass">
+				<div class="list-header">
+					<span>All Responses</span>
+					<button id="refresh-btn">↻ Refresh</button>
+				</div>
+				<div id="response-list">
+					<div class="empty-state">Loading responses…</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="module">
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+			import { getFirestore, collection, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+			import { firebaseConfig, RESPONSES_COLLECTION } from "./js/firebase-config.js";
+
+			const db = getFirestore(initializeApp(firebaseConfig));
+
+			function formatTime(ts) {
+				if (!ts) return "";
+				const d = ts.toDate();
+				return d.toLocaleDateString("en-PH", { month: "short", day: "numeric" }) + " · " + d.toLocaleTimeString("en-PH", { hour: "2-digit", minute: "2-digit" });
+			}
+
+			// Builds an element without ever interpreting guest-supplied text as HTML.
+			function el(tag, className, text) {
+				const node = document.createElement(tag);
+				if (className) node.className = className;
+				if (text != null) node.textContent = text;
+				return node;
+			}
+
+			function setCounts(yes, no) {
+				document.getElementById("count-yes").textContent = yes;
+				document.getElementById("count-no").textContent = no;
+				document.getElementById("count-total").textContent = yes + no;
+			}
+
+			async function loadResponses() {
+				const list = document.getElementById("response-list");
+				try {
+					const snap = await getDocs(query(collection(db, RESPONSES_COLLECTION), orderBy("lastActionAt", "desc")));
+					list.replaceChildren();
+
+					if (snap.empty) {
+						list.append(el("div", "empty-state", "No responses yet."));
+						setCounts(0, 0);
+						return;
+					}
+
+					let yes = 0,
+						no = 0;
+					snap.forEach((doc) => {
+						const d = doc.data();
+						const attending = d.response === "yes";
+						attending ? yes++ : no++;
+
+						const info = el("div", "guest-info");
+						info.append(el("span", "guest-name", d.guestName || "—"), el("span", "guest-device", [d.platform, d.language, d.screenSize].filter(Boolean).join(" · ")));
+
+						const meta = el("div", "response-meta");
+						meta.append(el("span", `response-badge ${attending ? "badge-yes" : "badge-no"}`, attending ? "💃 Attending" : "💜 Can't make it"), el("span", "response-time", formatTime(d.lastActionAt)));
+
+						const item = el("div", "response-item");
+						item.append(info, meta);
+						list.append(item);
+					});
+
+					setCounts(yes, no);
+				} catch (err) {
+					list.replaceChildren(el("div", "empty-state", "Failed to load responses."));
+					console.error(err);
+				}
+			}
+
+			document.getElementById("refresh-btn").addEventListener("click", loadResponses);
+			loadResponses();
+		</script>
+	</body>
+</html>
