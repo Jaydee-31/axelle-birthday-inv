@@ -538,6 +538,25 @@ body.pre-show #page {
 	pointer-events: none;
 	transform: scale(1.05);
 }
+
+/* Ticket outro (js/intro.js): the two torn halves and the spotlight flash. */
+.ticket-shadow.ticket-half {
+	position: fixed;
+	z-index: 150;
+	margin: 0;
+	pointer-events: none;
+	opacity: 1;
+	animation: none;
+	will-change: transform, opacity;
+}
+.intro-flash {
+	position: fixed;
+	inset: 0;
+	z-index: 140;
+	pointer-events: none;
+	opacity: 0;
+	background: radial-gradient(circle at 50% 45%, rgba(255, 250, 235, 0.95) 0%, rgba(255, 214, 160, 0.7) 35%, rgba(246, 237, 227, 0) 75%);
+}
 .intro-wrap {
 	display: flex;
 	flex-direction: column;
