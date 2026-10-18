@@ -64,7 +64,11 @@ The ticket intro (`#intro`) is a fixed overlay. Until it is dismissed, `body.pre
 
 ### Monthly photos
 
-Put each month's photo at `assets/img/eras/month-NN.jpg` (`month-01.jpg` … `month-12.jpg`), or set `photo` on that month in `GALLERY`. Months 1 and 3 currently point at `polaroid-1.png` and `polaroid-2.png`. A month whose photo is missing shows a colored era card with an emoji instead. Tapping a month that has a photo opens it in a lightbox.
+The gallery loads `assets/img/eras/web/month-NN.jpg` (`month-01.jpg` … `month-12.jpg`). These are web copies, at most 1400px and about 200 KB each, of the full-size originals in `assets/img/eras/`. Never point the gallery at the originals, which are 2–24 MB each and make the page lag on phones. To add a month, export a ≤1400px JPEG at quality ~80 to `web/month-NN.jpg`, or set `photo` on that month in `GALLERY`. A month whose photo is missing shows a colored era card with an emoji instead. Tapping a month that has a photo opens it in a lightbox.
+
+### Performance
+
+Keep animations on `transform`/`opacity` only. Avoid `backdrop-filter`, animated `filter: blur`, and animating `box-shadow` or `background-position`: with the moving balloons and confetti behind the page, these repaint every frame and caused visible lag on phones.
 
 Any element with class `reveal` fades up when it scrolls into view (`js/page.js`).
 

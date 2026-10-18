@@ -21,6 +21,7 @@ function renderGallery() {
 			const img = document.createElement("img");
 			img.alt = `Axelle at ${m.month} month${m.month > 1 ? "s" : ""}`;
 			img.loading = "lazy";
+			img.decoding = "async";
 			img.addEventListener("load", () => tile.classList.remove("no-photo"));
 			img.addEventListener("error", () => img.remove());
 			img.src = m.photo;

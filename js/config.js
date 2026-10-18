@@ -39,23 +39,24 @@ const DRESS_COLORS = [
 ];
 
 // ─── First-year gallery: one Taylor era per month, in album release order ────
-// Drop each month's photo at assets/img/eras/month-NN.jpg (e.g. month-04.jpg),
+// Each month loads assets/img/eras/web/month-NN.jpg — small (~200 KB) web copies
+// of the originals in assets/img/eras/. Keep new photos ≤1400px / a few hundred KB,
 // or point `photo` at any image. Months without a photo show an era card.
 const GALLERY = [
-	{ era: "Debut", emoji: "🤠", color: "#7cc8b0", photo: "assets/img/eras/1.jpg" },
-	{ era: "Fearless", emoji: "✨", color: "#e9b44c", photo: "assets/img/eras/2.jpg" },
-	{ era: "Speak Now", emoji: "💜", color: "#b58ad8", photo: "assets/img/eras/3.png" },
-	{ era: "Red", emoji: "🧣", color: "#d9534f", photo: "assets/img/eras/4.png" },
-	{ era: "1989", emoji: "🕶️", color: "#7fb8e0", photo: "assets/img/eras/5.png" },
-	{ era: "reputation", emoji: "🐍", color: "#4a4a4e", photo: "assets/img/eras/6.jpg" },
-	{ era: "Lover", emoji: "💗", color: "#f39bbd", photo: "assets/img/eras/7.png" },
-	{ era: "folklore", emoji: "🌲", color: "#a9a49b", photo: "assets/img/eras/8.png" },
-	{ era: "evermore", emoji: "🍂", color: "#b8754a", photo: "assets/img/eras/9.jpg" },
-	{ era: "Midnights", emoji: "🌙", color: "#4b5a8c", photo: "assets/img/eras/10.png" },
-	{ era: "TTPD", emoji: "🖋️", color: "#b9ae9c", photo: "assets/img/eras/11.jpg" },
-	{ era: "Showgirl", emoji: "🪩", color: "#f47b20" }, // add photo: "assets/img/eras/12.jpg" when ready
+	{ era: "Debut", emoji: "🤠", color: "#7cc8b0" },
+	{ era: "Fearless", emoji: "✨", color: "#e9b44c" },
+	{ era: "Speak Now", emoji: "💜", color: "#b58ad8" },
+	{ era: "Red", emoji: "🧣", color: "#d9534f" },
+	{ era: "1989", emoji: "🕶️", color: "#7fb8e0" },
+	{ era: "reputation", emoji: "🐍", color: "#4a4a4e" },
+	{ era: "Lover", emoji: "💗", color: "#f39bbd" },
+	{ era: "folklore", emoji: "🌲", color: "#a9a49b" },
+	{ era: "evermore", emoji: "🍂", color: "#b8754a" },
+	{ era: "Midnights", emoji: "🌙", color: "#4b5a8c" },
+	{ era: "TTPD", emoji: "🖋️", color: "#b9ae9c" },
+	{ era: "Showgirl", emoji: "🪩", color: "#f47b20" },
 ].map((m, i) => ({
 	month: i + 1,
-	photo: `assets/img/eras/month-${String(i + 1).padStart(2, "0")}.jpg`,
+	photo: `assets/img/eras/web/month-${String(i + 1).padStart(2, "0")}.jpg`,
 	...m,
 }));

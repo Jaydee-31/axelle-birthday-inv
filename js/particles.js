@@ -8,7 +8,7 @@ function pick(arr) {
 // Falling sequins: a mix of round sequins and paper-strip confetti.
 function createConfetti() {
 	const layer = document.getElementById("confetti-layer");
-	for (let i = 0; i < 34; i++) {
+	for (let i = 0; i < 18; i++) {
 		const c = document.createElement("div");
 		const round = Math.random() < 0.5;
 		c.className = "confetti" + (round ? " sequin" : "");
@@ -26,7 +26,7 @@ function createConfetti() {
 
 function createSparkles() {
 	const layer = document.getElementById("sparkle-layer");
-	for (let i = 0; i < 22; i++) {
+	for (let i = 0; i < 12; i++) {
 		const s = document.createElement("div");
 		s.className = "sparkle";
 		const size = 2 + Math.random() * 4;
@@ -63,7 +63,7 @@ function createBalloons() {
 function createFringe() {
 	const el = document.getElementById("fringe");
 	const tones = ["#f47b20", "#ff9a3d", "#e2660e", "#ffb862"];
-	for (let i = 0; i < 70; i++) {
+	for (let i = 0; i < 44; i++) {
 		const s = document.createElement("span");
 		s.style.cssText = `
       height:${46 + Math.random() * 30}px;
