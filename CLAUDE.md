@@ -78,7 +78,7 @@ Responses are written to Firestore collection `birthday_responses` (`RESPONSES_C
 
 ### Theme
 
-The palette is set by CSS custom properties at the top of `css/styles.css` (`--orange`, `--mint`, `--pink`, `--cream`, `--ivory`, `--silver`, `--ink`… plus a `--sequins` texture). `.glitter` gives orange glitter lettering and `.mint` gives mint lettering. JS decor colours come from `PARTY_COLORS` in `js/particles.js`. Fonts are Fredoka (headlines), Pacifico (names and greeting) and Quicksand (body/UI). `.reveal` elements can be staggered with an inline `style="--d: 0.2s"`.
+The palette is set by CSS custom properties at the top of `css/styles.css` (`--orange`, `--mint`, `--pink`, `--cream`, `--ivory`, `--silver`, `--ink`… plus a `--sequins` texture). `.glitter` gives orange glitter lettering and `.mint` gives mint lettering. JS decor colours come from `PARTY_COLORS` in `js/particles.js`. Fonts are Anton (display headlines, uppercase, like the SHOWGIRL sign; set via `--font-display`), Fredoka (buttons, card values, labels), Pacifico (names and greeting) and Quicksand (body/UI). `.reveal` elements can be staggered with an inline `style="--d: 0.2s"`.
 
 ### Audio
 

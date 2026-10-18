@@ -10,11 +10,11 @@ if (!guestName) {
 // Every element with data-event="<key>" gets its text from here (see init.js).
 // TODO: confirm date, time and venue before sending links out.
 const EVENT = {
-	name: "Axelle Bree",
+	name: "AXELLE BREE",
 	firstName: "Axelle",
 	age: "1",
 	ageOrdinal: "1st",
-	partyTitle: "The Eras Party",
+	partyTitle: "The Showgirl Party",
 	dateISO: "2026-11-06T16:00:00+08:00", // drives the live countdown — keep in sync with timeLabel
 	dateLabel: "November 6, 2026",
 	dayLabel: "Friday",
@@ -26,8 +26,6 @@ const EVENT = {
 	venueName: "DRV Family Resort",
 	venueAddress: "Pinatilan, Valencia City, Bukidnon",
 	mapUrl: "https://maps.app.goo.gl/oPrpNHcZyeuhMvia6",
-	dressCode: "Showgirl Chic",
-	dressCodeSub: "Come dressed in your favorite Era — sequins, feathers & fringe strongly encouraged!",
 };
 
 // Dress-code color swatches (taken from the party decor).
