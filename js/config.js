@@ -28,7 +28,6 @@ const EVENT = {
 	mapUrl: "https://maps.app.goo.gl/oPrpNHcZyeuhMvia6",
 	dressCode: "Showgirl Chic",
 	dressCodeSub: "Come dressed in your favorite Era — sequins, feathers & fringe strongly encouraged!",
-	dressCodeKids: "Little ones are welcome to come as superheroes or in any costume they love!",
 };
 
 // Dress-code color swatches (taken from the party decor).
