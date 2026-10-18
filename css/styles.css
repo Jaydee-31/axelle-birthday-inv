@@ -4,6 +4,15 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent; /* no blue flash on tap (mobile) */
+}
+/* No focus ring on mouse/touch; keyboard users get an on-theme orange ring instead of the default blue */
+:focus:not(:focus-visible) {
+	outline: none;
+}
+:focus-visible {
+	outline: 3px solid var(--orange);
+	outline-offset: 3px;
 }
 
 @property --spin {
@@ -351,8 +360,8 @@ body.pre-show #page {
 	z-index: -1;
 	pointer-events: none;
 	background: rgba(255, 250, 242, 0.35);
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
 	-webkit-mask-image: linear-gradient(to right, transparent, #000 80px, #000 calc(100% - 80px), transparent);
 	mask-image: linear-gradient(to right, transparent, #000 80px, #000 calc(100% - 80px), transparent);
 }
