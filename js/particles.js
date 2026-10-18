@@ -1,4 +1,5 @@
-const PARTY_COLORS = ["#ff8fc7", "#ff5fa8", "#c9a7f5", "#a45bf0", "#f5d07a", "#9ad7ff", "#ffffff"];
+// Showgirl party palette: tangerine, mint, bubblegum, ivory, silver.
+const PARTY_COLORS = ["#f47b20", "#f9a35c", "#8fd3bf", "#5fbfa3", "#f6a9c5", "#ee86ae", "#f3e6cf", "#c9cdd3"];
 
 function pick(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
@@ -38,6 +39,63 @@ function createSparkles() {
     `;
 		layer.appendChild(s);
 	}
+}
+
+// Balloons drifting up behind the page.
+function createBalloons() {
+	const layer = document.getElementById("balloon-layer");
+	for (let i = 0; i < 8; i++) {
+		const b = document.createElement("div");
+		b.className = "balloon";
+		const size = 34 + Math.random() * 22;
+		b.style.cssText = `
+      left:${4 + (i / 8) * 88 + Math.random() * 6}%;
+      --size:${size}px;
+      --color:${PARTY_COLORS[i % PARTY_COLORS.length]};
+      animation-duration:${16 + Math.random() * 12}s, ${3 + Math.random() * 2}s;
+      animation-delay:${-Math.random() * 24}s, ${-Math.random() * 3}s;
+    `;
+		layer.appendChild(b);
+	}
+}
+
+// Orange tinsel fringe curtain across the top of the greeting.
+function createFringe() {
+	const el = document.getElementById("fringe");
+	const tones = ["#f47b20", "#ff9a3d", "#e2660e", "#ffb862"];
+	for (let i = 0; i < 70; i++) {
+		const s = document.createElement("span");
+		s.style.cssText = `
+      height:${46 + Math.random() * 30}px;
+      background:linear-gradient(180deg, ${pick(tones)}, ${pick(tones)});
+      animation-delay:${-Math.random() * 3}s;
+      animation-duration:${2.4 + Math.random() * 1.6}s;
+    `;
+		el.appendChild(s);
+	}
+}
+
+// Letter-bead banners like the party sign: data-beads="LINE ONE|LINE TWO".
+// Spaces become little pink star beads.
+function createBeadBanners() {
+	document.querySelectorAll("[data-beads]").forEach((el) => {
+		el.dataset.beads.split("|").forEach((line) => {
+			const row = document.createElement("div");
+			row.className = "bead-row";
+			for (const ch of line) {
+				const b = document.createElement("span");
+				if (ch === " ") {
+					b.className = "bead-star";
+					b.textContent = "★";
+				} else {
+					b.className = "bead-letter";
+					b.textContent = ch;
+				}
+				row.appendChild(b);
+			}
+			el.appendChild(row);
+		});
+	});
 }
 
 // Friendship bracelet strand: colored beads with the birthday girl's name

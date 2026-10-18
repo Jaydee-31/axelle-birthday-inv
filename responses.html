@@ -106,6 +106,20 @@
 				margin-top: 8px;
 			}
 
+			.headcount {
+				margin: -8px 0 20px;
+				text-align: center;
+				font-size: 13px;
+				font-weight: 600;
+				color: var(--text-mid);
+			}
+
+			.guest-party {
+				font-size: 12px;
+				font-weight: 600;
+				color: var(--text-mid);
+			}
+
 			.list-card {
 				border-radius: 20px;
 				overflow: hidden;
@@ -224,10 +238,11 @@
 					<div class="summary-label">Can't make it</div>
 				</div>
 				<div class="summary-card glass">
-					<div class="summary-count" id="count-total">—</div>
-					<div class="summary-label">Total</div>
+					<div class="summary-count" id="count-guests">—</div>
+					<div class="summary-label">Guests coming</div>
 				</div>
 			</div>
+			<p class="headcount" id="headcount"></p>
 
 			<div class="list-card glass">
 				<div class="list-header">
@@ -261,10 +276,12 @@
 				return node;
 			}
 
-			function setCounts(yes, no) {
+			function setCounts(yes, no, adults, kids, unknown) {
 				document.getElementById("count-yes").textContent = yes;
 				document.getElementById("count-no").textContent = no;
-				document.getElementById("count-total").textContent = yes + no;
+				document.getElementById("count-guests").textContent = adults + kids;
+				document.getElementById("headcount").textContent =
+					`${adults} adult${adults === 1 ? "" : "s"} · ${kids} kid${kids === 1 ? "" : "s"}` + (unknown ? ` · ${unknown} RSVP${unknown === 1 ? "" : "s"} without a count` : "");
 			}
 
 			async function loadResponses() {
@@ -275,19 +292,32 @@
 
 					if (snap.empty) {
 						list.append(el("div", "empty-state", "No responses yet."));
-						setCounts(0, 0);
+						setCounts(0, 0, 0, 0, 0);
 						return;
 					}
 
 					let yes = 0,
-						no = 0;
+						no = 0,
+						adults = 0,
+						kids = 0,
+						unknown = 0;
 					snap.forEach((doc) => {
 						const d = doc.data();
 						const attending = d.response === "yes";
 						attending ? yes++ : no++;
+						// RSVPs saved before guest counts existed have no adults/kids fields.
+						const hasCount = typeof d.adults === "number";
+						if (attending && hasCount) {
+							adults += d.adults;
+							kids += d.kids || 0;
+						} else if (attending) {
+							unknown++;
+						}
 
 						const info = el("div", "guest-info");
-						info.append(el("span", "guest-name", d.guestName || "—"), el("span", "guest-device", [d.platform, d.language, d.screenSize].filter(Boolean).join(" · ")));
+						info.append(el("span", "guest-name", d.guestName || "—"));
+						if (attending) info.append(el("span", "guest-party", hasCount ? `👤 ${d.adults} adult${d.adults === 1 ? "" : "s"} · 🧒 ${d.kids || 0} kid${d.kids === 1 ? "" : "s"}` : "party size not given"));
+						info.append(el("span", "guest-device", [d.platform, d.language, d.screenSize].filter(Boolean).join(" · ")));
 
 						const meta = el("div", "response-meta");
 						meta.append(el("span", `response-badge ${attending ? "badge-yes" : "badge-no"}`, attending ? "💃 Attending" : "💜 Can't make it"), el("span", "response-time", formatTime(d.lastActionAt)));
@@ -297,7 +327,7 @@
 						list.append(item);
 					});
 
-					setCounts(yes, no);
+					setCounts(yes, no, adults, kids, unknown);
 				} catch (err) {
 					list.replaceChildren(el("div", "empty-state", "Failed to load responses."));
 					console.error(err);

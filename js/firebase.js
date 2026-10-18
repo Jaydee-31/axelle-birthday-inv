@@ -41,9 +41,11 @@ function currentDeviceInfo() {
  *
  * - New device  → creates a full document with firstSeenAt + all fields.
  * - Known device → updates only lastActionAt, device info, and the latest
- *                  guestName / response.
+ *                  guestName / response / party size.
+ *
+ * `counts` is { adults, kids } — both 0 when the guest can't make it.
  */
-async function saveDeviceAction(guestName, response) {
+async function saveDeviceAction(guestName, response, counts = { adults: 0, kids: 0 }) {
 	const deviceId = getOrCreateDeviceId();
 	const deviceRef = doc(db, RESPONSES_COLLECTION, deviceId);
 	const snapshot = await getDoc(deviceRef);
@@ -53,6 +55,9 @@ async function saveDeviceAction(guestName, response) {
 		lastActionAt: serverTimestamp(),
 		guestName: guestName || null,
 		response,
+		adults: counts.adults,
+		kids: counts.kids,
+		totalGuests: counts.adults + counts.kids,
 	};
 
 	if (!snapshot.exists()) {
