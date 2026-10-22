@@ -225,7 +225,7 @@
 		<div class="page">
 			<header>
 				<div class="heading">Guest Responses</div>
-				<div class="subheading" id="subheading">Axelle's 1st Birthday · The Showgirl Party</div>
+				<div class="subheading" id="subheading">Axelle's 1st Birthday</div>
 			</header>
 
 			<div class="summary">
@@ -280,8 +280,7 @@
 				document.getElementById("count-yes").textContent = yes;
 				document.getElementById("count-no").textContent = no;
 				document.getElementById("count-guests").textContent = adults + kids;
-				document.getElementById("headcount").textContent =
-					`${adults} adult${adults === 1 ? "" : "s"} · ${kids} kid${kids === 1 ? "" : "s"}` + (unknown ? ` · ${unknown} RSVP${unknown === 1 ? "" : "s"} without a count` : "");
+				document.getElementById("headcount").textContent = `${adults} adult${adults === 1 ? "" : "s"} · ${kids} kid${kids === 1 ? "" : "s"}` + (unknown ? ` · ${unknown} RSVP${unknown === 1 ? "" : "s"} without a count` : "");
 			}
 
 			async function loadResponses() {

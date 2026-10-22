@@ -15,12 +15,12 @@ const EVENT = {
 	age: "1",
 	ageOrdinal: "1st",
 	partyTitle: "The Showgirl Party",
-	dateISO: "2026-11-06T16:00:00+08:00", // drives the live countdown — keep in sync with timeLabel
+	dateISO: "2026-11-06T16:30:00+08:00", // drives the live countdown — keep in sync with timeLabel
 	dateLabel: "November 6, 2026",
 	dayLabel: "Friday",
 	monthShort: "Nov",
 	dayNum: "6",
-	timeLabel: "4:00 PM",
+	timeLabel: "4:30 PM",
 	timeSub: "'til the party's over",
 	durationHours: 4, // end time for the Google Calendar event (start + this many hours)
 	venueName: "DRV Family Resort",

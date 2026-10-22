@@ -44,3 +44,4 @@ createBalloons();
 createFringe();
 createBeadBanners();
 createBracelet();
+createVanityLights();

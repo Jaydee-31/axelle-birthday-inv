@@ -120,3 +120,22 @@ function createBracelet() {
 	}
 	for (let i = 0; i < side; i++) addBead();
 }
+
+// Dressing-room vanity bulbs around the countdown: a row along the top and
+// bottom (corners included) and a column down each side.
+function createVanityLights() {
+	const el = document.getElementById("vanity-lights");
+	const strips = { top: 9, bottom: 9, left: 3, right: 3 };
+	let n = 0;
+	for (const [side, count] of Object.entries(strips)) {
+		const strip = document.createElement("div");
+		strip.className = `vanity-strip ${side}`;
+		for (let i = 0; i < count; i++) {
+			const b = document.createElement("span");
+			b.className = "bulb";
+			b.style.setProperty("--d", `${(n++ % 2) * -1.6}s`);
+			strip.appendChild(b);
+		}
+		el.appendChild(strip);
+	}
+}

@@ -27,7 +27,7 @@ Guest name personalization is driven by a URL parameter: `index.html?guest=Guest
     ├── firebase-config.js# ES module: firebaseConfig + RESPONSES_COLLECTION (shared with responses.html)
     ├── firebase.js       # ES module: window.saveDeviceAction(guestName, response)
     ├── config.js         # guestName, EVENT details, DRESS_COLORS, GALLERY
-    ├── particles.js      # createConfetti(), createSparkles(), createBalloons(), createFringe(), createBeadBanners(), createBracelet(), PARTY_COLORS
+    ├── particles.js      # createConfetti(), createSparkles(), createBalloons(), createFringe(), createBeadBanners(), createBracelet(), createVanityLights(), PARTY_COLORS
     ├── audio.js          # Background music toggle (assets/audio/life_of_a_showgirl.mp3)
     ├── modal.js          # openModal(), RSVP yes/no handlers, burstConfetti()
     ├── countdown.js      # startCountdown() — live days/hours/mins/secs to EVENT.dateISO
@@ -55,7 +55,7 @@ The ticket intro (`#intro`) is a fixed overlay. Until it is dismissed, `body.pre
 | Section | Content |
 |---------|---------|
 | `#hello` | Tinsel fringe, vinyl "1", "LIFE OF A LITTLE SHOWGIRL" bead sign, "Hi, {guest}! You're Invited!" |
-| `#countdown` | Live countdown on a silver sequin panel; switches to "It's Showtime!" after the start time |
+| `#countdown` | Live countdown on a shiny silver panel inside a glossy orange vanity-mirror frame of glowing bulbs (`createVanityLights()`); switches to "It's Showtime!" after the start time |
 | `#eras` | "My Eras": 12 months, one Taylor era per month in album release order (from `GALLERY`) |
 | `#details` | "The Party": date, time, venue (map link) |
 | `#dress-code` | Dress code, color swatches, sequins/feathers/fringe tips, bracelet-trade note |
