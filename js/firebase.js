@@ -1,9 +1,20 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-import { firebaseConfig, RESPONSES_COLLECTION } from "./firebase-config.js";
+import { firebaseConfig, RESPONSES_COLLECTION, SETTINGS_COLLECTION, WISHLIST_DOC } from "./firebase-config.js";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// ─── Gift wishlist ────────────────────────────────────────────────────────────
+
+// The page first renders WISHLIST from config.js; once saved on wishlist.html,
+// the Firestore list replaces it. If the fetch fails, the config list stays.
+getDoc(doc(db, SETTINGS_COLLECTION, WISHLIST_DOC))
+	.then((snap) => {
+		const items = snap.exists() ? snap.data().items : null;
+		if (Array.isArray(items)) fillWishlist(items);
+	})
+	.catch((err) => console.warn("Wishlist not loaded:", err));
 
 // ─── Device ID helpers ────────────────────────────────────────────────────────
 

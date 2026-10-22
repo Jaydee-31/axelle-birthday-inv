@@ -36,6 +36,7 @@ DRESS_COLORS.forEach((c) => {
 });
 
 renderGallery();
+renderWishlist();
 startCountdown();
 
 createConfetti();

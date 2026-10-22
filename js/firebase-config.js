@@ -13,3 +13,10 @@ export const firebaseConfig = {
 };
 
 export const RESPONSES_COLLECTION = "birthday_responses";
+
+// The gift wishlist edited on wishlist.html: one document, { items: [{ emoji, item, note }] }.
+export const SETTINGS_COLLECTION = "birthday_settings";
+export const WISHLIST_DOC = "wishlist";
+
+// Guests added on guests.html, each with their personal invitation link.
+export const GUESTS_COLLECTION = "birthday_guests";

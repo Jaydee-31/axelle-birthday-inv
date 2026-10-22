@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="noindex" />
+		<title>Axelle's Birthday — Edit Wishlist</title>
+		<link href="assets/img/favicon.ico" rel="icon" />
+		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:ital@1&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<style>
+			*,
+			*::before,
+			*::after {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--night: #1a0f2e;
+				--pink: #ff8fc7;
+				--lilac: #c9a7f5;
+				--gold: #f5d07a;
+				--text-dark: #fff6fb;
+				--text-mid: #ead9f7;
+				--text-light: #bfa8dc;
+				--line: rgba(255, 200, 235, 0.2);
+			}
+
+			body {
+				min-height: 100vh;
+				background:
+					radial-gradient(ellipse at 50% -10%, #4a2470 0%, transparent 60%),
+					linear-gradient(170deg, #1d1033 0%, #2a1548 45%, #1a0f2e 100%) fixed;
+				background-color: var(--night);
+				font-family: "Quicksand", sans-serif;
+				color: var(--text-dark);
+				padding: 32px 16px 48px;
+			}
+
+			.page {
+				max-width: 520px;
+				margin: 0 auto;
+			}
+
+			header {
+				text-align: center;
+				margin-bottom: 24px;
+			}
+
+			.heading {
+				font-family: "Abril Fatface", serif;
+				font-size: clamp(32px, 9vw, 44px);
+				background: linear-gradient(135deg, #ffe1f1 0%, var(--pink) 35%, var(--lilac) 65%, var(--gold) 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				line-height: 1.2;
+			}
+
+			.subheading {
+				font-family: "Playfair Display", serif;
+				font-style: italic;
+				font-size: 13px;
+				color: var(--text-light);
+				margin-top: 6px;
+			}
+
+			.glass {
+				background: linear-gradient(160deg, rgba(70, 38, 110, 0.62), rgba(38, 20, 66, 0.7));
+				border: 1px solid var(--line);
+				box-shadow: 0 8px 30px rgba(10, 0, 30, 0.4);
+			}
+
+			.list-card {
+				border-radius: 20px;
+				overflow: hidden;
+			}
+
+			.list-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 14px 18px;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1.2px;
+				color: var(--text-light);
+				border-bottom: 1px solid rgba(255, 200, 235, 0.12);
+			}
+
+			.gift-row {
+				display: grid;
+				grid-template-columns: 48px 1fr auto;
+				gap: 8px;
+				align-items: start;
+				padding: 12px 14px;
+				border-bottom: 1px solid rgba(255, 200, 235, 0.08);
+			}
+
+			.gift-fields {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				min-width: 0;
+			}
+
+			input {
+				width: 100%;
+				font: inherit;
+				font-size: 14px;
+				color: var(--text-dark);
+				background: rgba(20, 8, 40, 0.5);
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				padding: 8px 10px;
+			}
+			input:focus {
+				outline: 2px solid var(--pink);
+				outline-offset: 0;
+			}
+			input::placeholder {
+				color: var(--text-light);
+				opacity: 0.7;
+			}
+			.gift-emoji {
+				text-align: center;
+				font-size: 20px;
+				padding: 6px 0;
+			}
+			.gift-item {
+				font-weight: 700;
+			}
+			.gift-note {
+				font-size: 12px;
+			}
+
+			.gift-actions {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+			}
+
+			.icon-btn {
+				width: 30px;
+				height: 26px;
+				background: none;
+				border: 1px solid var(--line);
+				border-radius: 8px;
+				color: var(--text-mid);
+				font: inherit;
+				font-size: 13px;
+				cursor: pointer;
+			}
+			.icon-btn:disabled {
+				opacity: 0.3;
+				cursor: default;
+			}
+			.icon-btn.remove {
+				color: var(--pink);
+			}
+
+			.add-btn {
+				display: block;
+				width: calc(100% - 28px);
+				margin: 12px 14px 14px;
+				padding: 10px;
+				background: none;
+				border: 1px dashed rgba(255, 200, 235, 0.4);
+				border-radius: 12px;
+				color: var(--text-mid);
+				font: inherit;
+				font-weight: 700;
+				cursor: pointer;
+			}
+
+			.save-bar {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-top: 18px;
+			}
+
+			.save-btn {
+				padding: 12px 28px;
+				background: linear-gradient(135deg, var(--pink), var(--lilac));
+				border: none;
+				border-radius: 50px;
+				color: #2a1548;
+				font: inherit;
+				font-weight: 700;
+				font-size: 15px;
+				cursor: pointer;
+			}
+			.save-btn:disabled {
+				opacity: 0.5;
+				cursor: default;
+			}
+
+			.status {
+				font-size: 13px;
+				font-weight: 600;
+				color: var(--text-mid);
+			}
+			.status.error {
+				color: var(--pink);
+			}
+
+			.hint {
+				margin-top: 14px;
+				font-size: 12px;
+				color: var(--text-light);
+				line-height: 1.6;
+			}
+
+			.empty-state {
+				padding: 32px 20px 10px;
+				text-align: center;
+				color: var(--text-light);
+				font-style: italic;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<header>
+				<div class="heading">Gift Wishlist</div>
+				<div class="subheading">Axelle's 1st Birthday</div>
+			</header>
+
+			<div class="list-card glass">
+				<div class="list-header"><span>Gifts</span><span id="gift-count"></span></div>
+				<div id="gift-list"><div class="empty-state">Loading wishlist…</div></div>
+				<button type="button" class="add-btn" id="add-btn">＋ Add a gift</button>
+			</div>
+
+			<div class="save-bar">
+				<button type="button" class="save-btn" id="save-btn">Save wishlist</button>
+				<span class="status" id="status" role="status"></span>
+			</div>
+			<p class="hint">Changes show on the invitation as soon as you save. Rows without a gift name are skipped. Saving an empty list hides the wishlist section.</p>
+		</div>
+
+		<script type="module">
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+			import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+			import { firebaseConfig, SETTINGS_COLLECTION, WISHLIST_DOC } from "./js/firebase-config.js";
+
+			const db = getFirestore(initializeApp(firebaseConfig));
+			const ref = doc(db, SETTINGS_COLLECTION, WISHLIST_DOC);
+
+			const listEl = document.getElementById("gift-list");
+			const statusEl = document.getElementById("status");
+			const saveBtn = document.getElementById("save-btn");
+			let gifts = [];
+			let dirty = false;
+
+			function setStatus(text, isError = false) {
+				statusEl.textContent = text;
+				statusEl.classList.toggle("error", isError);
+			}
+
+			function markDirty() {
+				dirty = true;
+				setStatus("Unsaved changes");
+			}
+
+			function input(className, value, placeholder, label, onInput) {
+				const node = document.createElement("input");
+				node.className = className;
+				node.value = value || "";
+				node.placeholder = placeholder;
+				node.setAttribute("aria-label", label);
+				node.addEventListener("input", () => {
+					onInput(node.value);
+					markDirty();
+				});
+				return node;
+			}
+
+			function button(text, className, label, onClick) {
+				const node = document.createElement("button");
+				node.type = "button";
+				node.className = className;
+				node.textContent = text;
+				node.setAttribute("aria-label", label);
+				node.addEventListener("click", onClick);
+				return node;
+			}
+
+			function move(i, by) {
+				const j = i + by;
+				[gifts[i], gifts[j]] = [gifts[j], gifts[i]];
+				markDirty();
+				render();
+			}
+
+			function render() {
+				listEl.replaceChildren();
+				document.getElementById("gift-count").textContent = gifts.length ? `${gifts.length} gift${gifts.length === 1 ? "" : "s"}` : "";
+				if (!gifts.length) {
+					const empty = document.createElement("div");
+					empty.className = "empty-state";
+					empty.textContent = "No gifts yet. Add one below.";
+					listEl.append(empty);
+					return;
+				}
+
+				gifts.forEach((g, i) => {
+					const row = document.createElement("div");
+					row.className = "gift-row";
+
+					const fields = document.createElement("div");
+					fields.className = "gift-fields";
+					fields.append(
+						input("gift-item", g.item, "Gift, e.g. Board books", `Gift ${i + 1} name`, (v) => (g.item = v)),
+						input("gift-note", g.note, "Note (optional), e.g. size 12–18 months", `Gift ${i + 1} note`, (v) => (g.note = v)),
+					);
+
+					const actions = document.createElement("div");
+					actions.className = "gift-actions";
+					const up = button("↑", "icon-btn", `Move gift ${i + 1} up`, () => move(i, -1));
+					const down = button("↓", "icon-btn", `Move gift ${i + 1} down`, () => move(i, 1));
+					up.disabled = i === 0;
+					down.disabled = i === gifts.length - 1;
+					const remove = button("✕", "icon-btn remove", `Remove gift ${i + 1}`, () => {
+						gifts.splice(i, 1);
+						markDirty();
+						render();
+					});
+					actions.append(up, down, remove);
+
+					row.append(input("gift-emoji", g.emoji, "🎁", `Gift ${i + 1} emoji`, (v) => (g.emoji = v)), fields, actions);
+					listEl.append(row);
+				});
+			}
+
+			async function load() {
+				try {
+					const snap = await getDoc(ref);
+					gifts = snap.exists() && Array.isArray(snap.data().items) ? snap.data().items.map((g) => ({ ...g })) : [];
+					if (!snap.exists()) setStatus("Not saved yet: the invitation shows the default list from js/config.js.");
+				} catch (err) {
+					console.error(err);
+					setStatus("Couldn't load the wishlist. Check the Firestore rules.", true);
+				}
+				render();
+			}
+
+			document.getElementById("add-btn").addEventListener("click", () => {
+				gifts.push({ emoji: "🎁", item: "", note: "" });
+				markDirty();
+				render();
+				listEl.querySelector(".gift-row:last-child .gift-item").focus();
+			});
+
+			saveBtn.addEventListener("click", async () => {
+				const items = gifts
+					.map((g) => ({ emoji: (g.emoji || "").trim() || "🎁", item: (g.item || "").trim(), note: (g.note || "").trim() }))
+					.filter((g) => g.item);
+				saveBtn.disabled = true;
+				setStatus("Saving…");
+				try {
+					await setDoc(ref, { items, updatedAt: serverTimestamp() });
+					gifts = items.map((g) => ({ ...g }));
+					dirty = false;
+					render();
+					setStatus("Saved ✓");
+				} catch (err) {
+					console.error(err);
+					setStatus("Save failed. Check the Firestore rules.", true);
+				} finally {
+					saveBtn.disabled = false;
+				}
+			});
+
+			window.addEventListener("beforeunload", (e) => {
+				if (dirty) e.preventDefault();
+			});
+
+			load();
+		</script>
+	</body>
+</html>

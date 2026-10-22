@@ -21,17 +21,20 @@ Guest name personalization is driven by a URL parameter: `index.html?guest=Guest
 ```
 ├── index.html            # Markup only — no inline CSS or JS
 ├── responses.html        # Admin view of RSVPs (reads Firestore)
+├── wishlist.html         # Admin editor for the gift wishlist (writes Firestore)
+├── guests.html           # Admin: create/copy personal guest links, saved in Firestore with RSVP status
 ├── css/styles.css        # All styles and animations
 └── js/
     ├── error-handler.js  # Swallows/logs global errors
-    ├── firebase-config.js# ES module: firebaseConfig + RESPONSES_COLLECTION (shared with responses.html)
-    ├── firebase.js       # ES module: window.saveDeviceAction(guestName, response)
-    ├── config.js         # guestName, EVENT details, DRESS_COLORS, GALLERY
+    ├── firebase-config.js# ES module: firebaseConfig, RESPONSES_COLLECTION, SETTINGS_COLLECTION/WISHLIST_DOC, GUESTS_COLLECTION (shared with the admin pages)
+    ├── firebase.js       # ES module: window.saveDeviceAction(guestName, response); loads the saved wishlist
+    ├── config.js         # guestName, EVENT details, DRESS_COLORS, WISHLIST, GALLERY
     ├── particles.js      # createConfetti(), createSparkles(), createBalloons(), createFringe(), createBeadBanners(), createBracelet(), createVanityLights(), PARTY_COLORS
     ├── audio.js          # Background music toggle (assets/audio/life_of_a_showgirl.mp3)
     ├── modal.js          # openModal(), RSVP yes/no handlers, burstConfetti()
     ├── countdown.js      # startCountdown() — live days/hours/mins/secs to EVENT.dateISO
     ├── gallery.js        # renderGallery() from GALLERY + photo lightbox
+    ├── wishlist.js       # renderWishlist() + show/hide button; fillWishlist(items) re-renders the list
     ├── page.js           # startPage() — scroll-in .reveal animations; RSVP button → openModal
     ├── intro.js          # "Open My Ticket" button → unlocks the page, calls startPage()
     └── init.js           # Binds EVENT → [data-event] elements, guest greeting, countdown, decor
@@ -58,6 +61,7 @@ The ticket intro (`#intro`) is a fixed overlay. Until it is dismissed, `body.pre
 | `#countdown` | Live countdown on a shiny silver panel inside a glossy orange vanity-mirror frame of glowing bulbs (`createVanityLights()`); switches to "It's Showtime!" after the start time |
 | `#eras` | "My Eras": 12 months, one Taylor era per month in album release order (from `GALLERY`) |
 | `#details` | "The Party": date, time, venue (map link) |
+| `#wishlist` | "My Wishlist": gift ideas, hidden until the "Show my wishlist" button is tapped (see Gift wishlist below) |
 | `#dress-code` | Dress code, color swatches, sequins/feathers/fringe tips, bracelet-trade note |
 | `#rsvp` | "Are You Ready For It?" and the RSVP button (opens the modal) |
 | footer | Friendship-bracelet bead strand |
@@ -75,6 +79,14 @@ Any element with class `reveal` fades up when it scrolls into view (`js/page.js`
 ### RSVP storage
 
 Responses are written to Firestore collection `birthday_responses` (`RESPONSES_COLLECTION`), keyed by a per-browser device ID in localStorage. The RSVP pop-up has two steps. Step 1 is yes/no. On "yes", step 2 asks for party size with +/− steppers: Adults (1–10, including the guest) and Kids (0–10). Each document stores `response`, `adults`, `kids` and `totalGuests` (all 0 for "no"). `responses.html` totals the headcount and flags older "yes" RSVPs that have no count. The Firebase project is shared with the christening invitation, whose data lives in `guest_responses`. Firestore security rules must allow read/write on `birthday_responses`.
+
+### Gift wishlist
+
+The wishlist is edited on `wishlist.html` and saved to Firestore document `birthday_settings/wishlist` as `{ items: [{ emoji, item, note }], updatedAt }`. The invitation first renders `WISHLIST` from `js/config.js`, and `firebase.js` then replaces it with the saved list. If nothing has been saved, or the fetch fails, the config list stays. Saving an empty list hides the `#wishlist` section. Firestore rules must allow read on `birthday_settings` for guests and write for whoever edits it.
+
+### Guest links
+
+`guests.html` turns a name into the invitation link (`./?guest=<name>`, relative to where the page is hosted) with a copy button, and saves the guest to Firestore collection `birthday_guests` as `{ name, createdAt }`. Links are built when the page loads, not stored. The list shows each guest's RSVP by matching names (ignoring case) against `birthday_responses`. Removing a guest only removes them from the list, because the link works for any name. Firestore rules must allow read/write on `birthday_guests`.
 
 ### Theme
 

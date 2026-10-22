@@ -36,6 +36,17 @@ const DRESS_COLORS = [
 	{ name: "Silver", hex: "linear-gradient(135deg, #f4f5f7, #b9bec6 50%, #eef0f2)" },
 ];
 
+// ─── Gift wishlist (revealed by the "Show my wishlist" button) ───────────────
+// TODO: replace these placeholder ideas with Axelle's real wishlist.
+const WISHLIST = [
+	{ emoji: "📚", item: "Board books", note: "touch-and-feel or lift-the-flap" },
+	{ emoji: "🧸", item: "Soft plush toy" },
+	{ emoji: "🧩", item: "Stacking & sorting toys" },
+	{ emoji: "🎵", item: "Musical toys", note: "a little drum or xylophone" },
+	{ emoji: "👗", item: "Clothes", note: "size 12–18 months" },
+	{ emoji: "🛁", item: "Bath toys" },
+];
+
 // ─── First-year gallery: one Taylor era per month, in album release order ────
 // Each month loads assets/img/eras/web/month-NN.jpg — small (~200 KB) web copies
 // of the originals in assets/img/eras/. Keep new photos ≤1400px / a few hundred KB,

@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="noindex" />
+		<title>Axelle's Birthday — Guest Links</title>
+		<link href="assets/img/favicon.ico" rel="icon" />
+		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:ital@1&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<style>
+			*,
+			*::before,
+			*::after {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--night: #1a0f2e;
+				--pink: #ff8fc7;
+				--lilac: #c9a7f5;
+				--gold: #f5d07a;
+				--text-dark: #fff6fb;
+				--text-mid: #ead9f7;
+				--text-light: #bfa8dc;
+				--line: rgba(255, 200, 235, 0.2);
+			}
+
+			body {
+				min-height: 100vh;
+				background:
+					radial-gradient(ellipse at 50% -10%, #4a2470 0%, transparent 60%),
+					linear-gradient(170deg, #1d1033 0%, #2a1548 45%, #1a0f2e 100%) fixed;
+				background-color: var(--night);
+				font-family: "Quicksand", sans-serif;
+				color: var(--text-dark);
+				padding: 32px 16px 48px;
+			}
+
+			.page {
+				max-width: 520px;
+				margin: 0 auto;
+			}
+
+			header {
+				text-align: center;
+				margin-bottom: 24px;
+			}
+
+			.heading {
+				font-family: "Abril Fatface", serif;
+				font-size: clamp(32px, 9vw, 44px);
+				background: linear-gradient(135deg, #ffe1f1 0%, var(--pink) 35%, var(--lilac) 65%, var(--gold) 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				line-height: 1.2;
+			}
+
+			.subheading {
+				font-family: "Playfair Display", serif;
+				font-style: italic;
+				font-size: 13px;
+				color: var(--text-light);
+				margin-top: 6px;
+			}
+
+			.glass {
+				background: linear-gradient(160deg, rgba(70, 38, 110, 0.62), rgba(38, 20, 66, 0.7));
+				border: 1px solid var(--line);
+				box-shadow: 0 8px 30px rgba(10, 0, 30, 0.4);
+			}
+
+			.create-card {
+				border-radius: 20px;
+				padding: 18px;
+				margin-bottom: 20px;
+			}
+
+			label {
+				display: block;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1.2px;
+				color: var(--text-light);
+				margin-bottom: 8px;
+			}
+
+			.create-row {
+				display: flex;
+				gap: 8px;
+			}
+
+			input {
+				flex: 1;
+				min-width: 0;
+				font: inherit;
+				font-size: 15px;
+				color: var(--text-dark);
+				background: rgba(20, 8, 40, 0.5);
+				border: 1px solid var(--line);
+				border-radius: 12px;
+				padding: 10px 12px;
+			}
+			input:focus {
+				outline: 2px solid var(--pink);
+				outline-offset: 0;
+			}
+			input::placeholder {
+				color: var(--text-light);
+				opacity: 0.7;
+			}
+
+			.main-btn {
+				padding: 10px 18px;
+				background: linear-gradient(135deg, var(--pink), var(--lilac));
+				border: none;
+				border-radius: 50px;
+				color: #2a1548;
+				font: inherit;
+				font-weight: 700;
+				font-size: 14px;
+				white-space: nowrap;
+				cursor: pointer;
+			}
+			.main-btn:disabled {
+				opacity: 0.5;
+				cursor: default;
+			}
+
+			.result {
+				margin-top: 14px;
+				padding: 12px;
+				border-radius: 14px;
+				background: rgba(20, 8, 40, 0.45);
+				border: 1px dashed rgba(255, 200, 235, 0.35);
+			}
+			.result[hidden] {
+				display: none;
+			}
+			.result-name {
+				font-weight: 700;
+				font-size: 14px;
+				margin-bottom: 8px;
+			}
+			.result .create-row input {
+				font-size: 12px;
+				color: var(--text-mid);
+			}
+
+			.status {
+				margin-top: 10px;
+				font-size: 13px;
+				font-weight: 600;
+				color: var(--text-mid);
+				min-height: 1em;
+			}
+			.status.error {
+				color: var(--pink);
+			}
+
+			.list-card {
+				border-radius: 20px;
+				overflow: hidden;
+			}
+
+			.list-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 10px;
+				padding: 14px 18px;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1.2px;
+				color: var(--text-light);
+				border-bottom: 1px solid rgba(255, 200, 235, 0.12);
+			}
+
+			.list-header button,
+			.small-btn {
+				background: none;
+				border: 1px solid rgba(255, 200, 235, 0.3);
+				border-radius: 50px;
+				color: var(--text-mid);
+				font: inherit;
+				font-size: 12px;
+				font-weight: 700;
+				padding: 4px 12px;
+				cursor: pointer;
+				white-space: nowrap;
+			}
+			.small-btn.copied {
+				border-color: var(--gold);
+				color: var(--gold);
+			}
+			.small-btn.remove {
+				color: var(--pink);
+				padding: 4px 9px;
+			}
+
+			.search {
+				display: block;
+				width: calc(100% - 28px);
+				margin: 12px 14px 4px;
+				font-size: 13px;
+				padding: 8px 12px;
+			}
+
+			.guest-item {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 10px;
+				padding: 12px 18px;
+				border-bottom: 1px solid rgba(255, 200, 235, 0.08);
+			}
+			.guest-item:last-child {
+				border-bottom: none;
+			}
+
+			.guest-info {
+				display: flex;
+				flex-direction: column;
+				gap: 3px;
+				min-width: 0;
+			}
+			.guest-name {
+				font-weight: 700;
+				font-size: 14px;
+				overflow-wrap: anywhere;
+			}
+			.guest-link {
+				font-size: 10px;
+				color: var(--text-light);
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.badge {
+				align-self: flex-start;
+				font-size: 11px;
+				font-weight: 700;
+				padding: 2px 9px;
+				border-radius: 20px;
+				background: rgba(191, 168, 220, 0.14);
+				color: var(--text-light);
+			}
+			.badge-yes {
+				background: rgba(255, 143, 199, 0.18);
+				color: var(--pink);
+			}
+			.badge-no {
+				background: rgba(201, 167, 245, 0.14);
+				color: var(--lilac);
+			}
+
+			.guest-actions {
+				display: flex;
+				gap: 6px;
+				flex-shrink: 0;
+			}
+
+			.empty-state {
+				padding: 32px 20px;
+				text-align: center;
+				color: var(--text-light);
+				font-style: italic;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<header>
+				<div class="heading">Guest Links</div>
+				<div class="subheading">Axelle's 1st Birthday</div>
+			</header>
+
+			<form class="create-card glass" id="create-form">
+				<label for="guest-name">Guest name</label>
+				<div class="create-row">
+					<input id="guest-name" placeholder="e.g. Tita Joy" autocomplete="off" required />
+					<button type="submit" class="main-btn" id="create-btn">Create link</button>
+				</div>
+				<p class="status" id="status" role="status"></p>
+				<div class="result" id="result" hidden>
+					<div class="result-name" id="result-name"></div>
+					<div class="create-row">
+						<input id="result-link" readonly aria-label="Invitation link" />
+						<button type="button" class="main-btn" id="result-copy">Copy</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="list-card glass">
+				<div class="list-header">
+					<span id="guest-count">Saved guests</span>
+					<button id="refresh-btn">↻ Refresh</button>
+				</div>
+				<input class="search" id="search" type="search" placeholder="Search guests" aria-label="Search guests" />
+				<div id="guest-list"><div class="empty-state">Loading guests…</div></div>
+			</div>
+		</div>
+
+		<script type="module">
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+			import { getFirestore, collection, query, orderBy, getDocs, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+			import { firebaseConfig, GUESTS_COLLECTION, RESPONSES_COLLECTION } from "./js/firebase-config.js";
+
+			const db = getFirestore(initializeApp(firebaseConfig));
+			const guestsRef = collection(db, GUESTS_COLLECTION);
+
+			const listEl = document.getElementById("guest-list");
+			const statusEl = document.getElementById("status");
+			const nameInput = document.getElementById("guest-name");
+			const searchInput = document.getElementById("search");
+			let guests = [];
+			let rsvps = new Map(); // lower-cased guest name → "yes" | "no"
+
+			// Links point at the invitation in the same folder as this page.
+			function inviteLink(name) {
+				const url = new URL("./", location.href);
+				url.searchParams.set("guest", name);
+				return url.href;
+			}
+
+			const key = (name) => name.trim().toLowerCase();
+
+			function setStatus(text, isError = false) {
+				statusEl.textContent = text;
+				statusEl.classList.toggle("error", isError);
+			}
+
+			function el(tag, className, text) {
+				const node = document.createElement(tag);
+				if (className) node.className = className;
+				if (text != null) node.textContent = text;
+				return node;
+			}
+
+			async function copy(text, btn) {
+				try {
+					await navigator.clipboard.writeText(text);
+				} catch (_) {
+					// Clipboard API needs https; fall back to a temporary text field.
+					const tmp = el("textarea");
+					tmp.value = text;
+					document.body.append(tmp);
+					tmp.select();
+					document.execCommand("copy");
+					tmp.remove();
+				}
+				const label = btn.textContent;
+				btn.textContent = "Copied ✓";
+				btn.classList.add("copied");
+				setTimeout(() => {
+					btn.textContent = label;
+					btn.classList.remove("copied");
+				}, 1500);
+			}
+
+			function showResult(name) {
+				document.getElementById("result-name").textContent = name;
+				document.getElementById("result-link").value = inviteLink(name);
+				document.getElementById("result").hidden = false;
+			}
+
+			function render() {
+				const q = key(searchInput.value);
+				const shown = guests.filter((g) => key(g.name).includes(q));
+				const going = guests.filter((g) => rsvps.get(key(g.name)) === "yes").length;
+				document.getElementById("guest-count").textContent = guests.length ? `${guests.length} guest${guests.length === 1 ? "" : "s"} · ${going} attending` : "Saved guests";
+
+				listEl.replaceChildren();
+				if (!shown.length) {
+					listEl.append(el("div", "empty-state", guests.length ? "No guests match." : "No guests yet. Add one above."));
+					return;
+				}
+
+				shown.forEach((g) => {
+					const link = inviteLink(g.name);
+					const info = el("div", "guest-info");
+					const rsvp = rsvps.get(key(g.name));
+					info.append(
+						el("span", "guest-name", g.name),
+						el("span", `badge ${rsvp ? `badge-${rsvp}` : ""}`, rsvp === "yes" ? "💃 Attending" : rsvp === "no" ? "💜 Can't make it" : "No RSVP yet"),
+						el("span", "guest-link", link),
+					);
+
+					const actions = el("div", "guest-actions");
+					const copyBtn = el("button", "small-btn", "Copy link");
+					copyBtn.type = "button";
+					copyBtn.addEventListener("click", () => copy(link, copyBtn));
+					const removeBtn = el("button", "small-btn remove", "✕");
+					removeBtn.type = "button";
+					removeBtn.setAttribute("aria-label", `Remove ${g.name}`);
+					removeBtn.addEventListener("click", () => removeGuest(g));
+					actions.append(copyBtn, removeBtn);
+
+					const item = el("div", "guest-item");
+					item.append(info, actions);
+					listEl.append(item);
+				});
+			}
+
+			async function loadRsvps() {
+				rsvps = new Map();
+				try {
+					const snap = await getDocs(collection(db, RESPONSES_COLLECTION));
+					snap.forEach((d) => {
+						const { guestName, response } = d.data();
+						if (guestName) rsvps.set(key(guestName), response);
+					});
+				} catch (err) {
+					console.warn("RSVPs not loaded:", err); // the guest list still works without them
+				}
+			}
+
+			async function load() {
+				try {
+					const [snap] = await Promise.all([getDocs(query(guestsRef, orderBy("createdAt", "desc"))), loadRsvps()]);
+					guests = snap.docs.map((d) => ({ id: d.id, name: d.data().name }));
+					render();
+				} catch (err) {
+					console.error(err);
+					listEl.replaceChildren(el("div", "empty-state", "Couldn't load guests. Check the Firestore rules."));
+				}
+			}
+
+			async function removeGuest(g) {
+				if (!confirm(`Remove ${g.name} from the list? Their link keeps working.`)) return;
+				try {
+					await deleteDoc(doc(db, GUESTS_COLLECTION, g.id));
+					guests = guests.filter((x) => x.id !== g.id);
+					render();
+				} catch (err) {
+					console.error(err);
+					setStatus("Couldn't remove that guest. Check the Firestore rules.", true);
+				}
+			}
+
+			document.getElementById("create-form").addEventListener("submit", async (e) => {
+				e.preventDefault();
+				const name = nameInput.value.trim().replace(/\s+/g, " ");
+				if (!name) return;
+
+				// Same name already saved → just show its link again.
+				if (guests.some((g) => key(g.name) === key(name))) {
+					showResult(name);
+					setStatus(`${name} is already on the list.`);
+					return;
+				}
+
+				const btn = document.getElementById("create-btn");
+				btn.disabled = true;
+				showResult(name);
+				setStatus("Saving…");
+				try {
+					const ref = await addDoc(guestsRef, { name, createdAt: serverTimestamp() });
+					guests.unshift({ id: ref.id, name });
+					render();
+					setStatus("Saved ✓");
+					nameInput.value = "";
+				} catch (err) {
+					console.error(err);
+					setStatus("Link created, but saving failed. Check the Firestore rules.", true);
+				} finally {
+					btn.disabled = false;
+					nameInput.focus();
+				}
+			});
+
+			document.getElementById("result-copy").addEventListener("click", (e) => copy(document.getElementById("result-link").value, e.currentTarget));
+			document.getElementById("refresh-btn").addEventListener("click", load);
+			searchInput.addEventListener("input", render);
+
+			load();
+		</script>
+	</body>
+</html>
