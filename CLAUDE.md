@@ -47,7 +47,7 @@ Classic scripts load in the order above and share global state, so load order ma
 All party details live in the `EVENT` object in `js/config.js`. Any element with `data-event="<key>"` is filled from it by `init.js`. To change the date, time, venue, map link, dress code or age, edit `EVENT` only. `dateISO` drives the live countdown, so keep it in sync with `timeLabel`. Dress-code swatches come from `DRESS_COLORS`.
 
 Things that are *not* driven by `EVENT`:
-- `<title>` and Open Graph/Twitter meta tags in `index.html`
+- `<title>` and Open Graph/Twitter meta tags in `index.html`. Don't add an `og:url` tag: Messenger/Facebook replace the shared link with it, which drops `?guest=`.
 - Polaroid captions and section copy in `index.html`
 - RSVP thank-you copy in `js/modal.js`
 
