@@ -976,6 +976,12 @@ body.pre-show #page {
 	line-height: 1.5;
 	max-width: 300px;
 }
+.hero-sign {
+	font-family: "Pacifico", cursive;
+	font-size: 20px;
+	color: var(--pink-deep);
+	margin-top: 10px;
+}
 .hero-sub .mint-text {
 	font-weight: 700;
 	font-size: 22px;
